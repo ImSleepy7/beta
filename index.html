@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!--PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Blogging
+Description: A two-column, fixed-width design for 1024x768 screen resolutions.
+Version    : 1.0
+Released   : 20090208
+
+-->
+<html>
+  <!-- xmlns="http://www.w3.org/1999/xhtml"> -->
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Climate</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-heat/dist/leaflet-heat.js"></script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header">
+        <div id="menu">
+          <ul>
+            <li class="current_page_item"><a href="#">Home</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Photos</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Links</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <!-- end #menu -->
+        <div id="search">
+          <form method="get" action="">
+            <fieldset>
+              <input
+                type="text"
+                name="s"
+                id="search-text"
+                size="15"
+                placeholder="palabra clave"
+              />
+              <input type="submit" id="search-submit" value="Buscar" />
+            </fieldset>
+          </form>
+        </div>
+        <!-- end #search -->
+      </div>
+      <!-- end #header -->
+      <div id="logo">
+        <h1><a href="https://www.weather.gov/">Atmosphere </a></h1>
+        <p>
+          <em>
+            All related to
+            <a href="https://www.accuweather.com/es/pe/national/satellite"
+              >atmospheric time</a
+            >
+          </em>
+        </p>
+      </div>
+      <hr />
+      <!-- end #logo -->
+      <!-- end #header-wrapper -->
+
+      <div id="page">
+        <div id="content">
+          <div class="post">
+            <h2 class="title">Clima</h2>
+            <p class="date">29.09.24</p>
+            <div class="entry">
+              <p>
+                Se trata de un patrón a largo plazo, se mide en décadas o
+                siglos. Es influenciado por factores como la latitud, la altitud
+                y la proximidad al mar, mientras que el segundo es influenciado
+                por factores como la
+                <a
+                  href="https://es.wikipedia.org/wiki/Presi%C3%B3n_atmosf%C3%A9rica"
+                  >presión atmosférica</a
+                >, la temperatura y la humedad.
+              </p>
+              <p class="links">
+                <a href="#" class="comments">Comments (69)</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#" class="permalink">Full article</a>
+              </p>
+            </div>
+          </div>
+          <div class="post">
+            <h2 class="title">Tiempo Atmosférico</h2>
+            <p class="date">29.09.24</p>
+            <div class="entry">
+              <p>
+                El tiempo atmosférico se trata de las condiciones de la
+                atmósfera en un momento y lugar específicos. Incluye la
+                temperatura, que mide el calor en la atmósfera y está
+                influenciada por la radiación solar. La humedad es la cantidad
+                de vapor de agua en el aire, lo que puede afectar la
+                <a
+                  href="https://es.wikipedia.org/wiki/Sensaci%C3%B3n_t%C3%A9rmica"
+                  >sensasión térmica</a
+                >. La presión atmosférica es la fuerza ejercida por el aire
+                sobre una superficie, fundamental en la meteorología. El viento,
+                que es el movimiento del aire, se mueve de áreas de alta a baja
+                presión y es crucial para comprender el clima. La nubosidad se
+                refiere a la cantidad y tipo de nubes, afectando tanto la
+                temperatura como la precipitación. Esta última incluye cualquier
+                forma de agua que cae de las nubes, como lluvia o nieve.
+                Finalmente, fenómenos meteorológicos como tormentas y huracanes
+                son eventos que pueden tener un gran impacto en el clima.
+              </p>
+              <p class="links">
+                <a href="#" class="comments">Comments (69)</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#" class="permalink">Full article</a>
+              </p>
+            </div>
+          </div>
+          <div class="post">
+            <h2 class="title">Cambio Climático</h2>
+            <p class="date">29.09.24</p>
+            <div class="entry">
+              <p>
+                El cambio climático se refiere a las alteraciones duraderas en
+                los patrones del clima global, que pueden incluir variaciones en
+                temperatura, precipitaciones y otros fenómenos meteorológicos.
+                Estas transformaciones son en gran parte impulsadas por
+                actividades humanas, especialmente la quema de combustibles
+                fósiles, la deforestación y las prácticas agrícolas, que
+                aumentan la concentración de gases de efecto invernadero en la
+                atmósfera. Como resultado, se producen efectos como el aumento
+                del nivel del mar, el derretimiento de glaciares, y
+                <a
+                  href="https://es.wikipedia.org/wiki/Fen%C3%B3meno_meteorol%C3%B3gico_extremo"
+                  >fenómenos climáticos extremos</a
+                >. El cambio climático tiene impactos profundos en los
+                ecosistemas, la agricultura, la salud y las economías a nivel
+                mundial.
+              </p>
+              <p class="links">
+                <a href="#" class="comments">Comments (69)</a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="#" class="permalink">Full article</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="post">
+            <h2 class="title">Mapa en tiempo real</h2>
+            <p class="date">29.09.24</p>
+            <div id="map"></div>
+            <script>
+              var map = L.map("map").setView([-12.0464, -77.0428], 5); // Lima, Perú
+
+              L.marker([-12.0464, -77.0428])
+                .addTo(map)
+                .bindPopup("Lima, Perú")
+                .openPopup();
+
+              L.tileLayer(
+                "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+                  maxZoom: 19,
+                  attribution: "© OpenStreetMap",
+                }
+              ).addTo(map);
+
+              // Datos de ejemplo para el mapa de calor
+              var heatData = [
+                [-12.0464, -77.0428, 0.9], // Lima
+                [-13.532, -71.9675, 0.7], // Cusco
+                [-16.409, -71.5374, 0.6], // Arequipa
+              ];
+
+              var heat = L.heatLayer(heatData, { radius: 25 }).addTo(map);
+            </script>
+          </div>
+        </div>
+        <!-- end #content -->
+        <div id="sidebar">
+          <ul>
+            <li>
+              <h2>Environment</h2>
+              <p>
+                El medio ambiente abarca todos los elementos naturales que nos
+                rodean, incluidos el aire, el agua, el suelo y los ecosistemas.
+                Ya que cada uno de estos componentes es crucial para la vida.
+              </p>
+            </li>
+            <li id="calendar">
+              <h2>Calendar</h2>
+              <div id="calendar_wrap">
+                <table summary="Calendar">
+                  <caption>
+                    September 2024
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th abbr="Monday" scope="col" title="Monday">M</th>
+                      <th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+                      <th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+                      <th abbr="Thursday" scope="col" title="Thursday">T</th>
+                      <th abbr="Friday" scope="col" title="Friday">F</th>
+                      <th abbr="Saturday" scope="col" title="Saturday">S</th>
+                      <th abbr="Sunday" scope="col" title="Sunday">S</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <td abbr="August" colspan="3" id="prev">
+                        <a href="#" title="">&laquo; Aug</a>
+                      </td>
+                      <td class="pad">&nbsp;</td>
+                      <td abbr="Octuber" colspan="3" id="next">
+                        <a href="#" title="">Oct &raquo;</a>
+                      </td>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <td colspan="5" class="pad">&nbsp;</td>
+                      <td>1</td>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>4</td>
+                      <td>5</td>
+                      <td>6</td>
+                      <td>7</td>
+                      <td>8</td>
+                      <td>9</td>
+                    </tr>
+                    <tr>
+                      <td>10</td>
+                      <td>11</td>
+                      <td>12</td>
+                      <td>13</td>
+                      <td>14</td>
+                      <td>15</td>
+                      <td>16</td>
+                    </tr>
+                    <tr>
+                      <td>17</td>
+                      <td>18</td>
+                      <td>19</td>
+                      <td>20</td>
+                      <td>21</td>
+                      <td>22</td>
+                      <td>23</td>
+                    </tr>
+                    <tr>
+                      <td>24</td>
+                      <td>25</td>
+                      <td>26</td>
+                      <td>27</td>
+                      <td>28</td>
+                      <td id="today">29</td>
+                      <td>30</td>
+                    </tr>
+                    <tr>
+                      <td>31</td>
+                      <td class="pad" colspan="6">&nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </li>
+            <li>
+              <h2>Important</h2>
+              <ol>
+                <li>
+                  <a href="#"></a
+                  ><a href="https://www.unep.org/es/"
+                    >El medio ambiente incluye todos los elementos naturales que
+                    nos rodean.</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.who.int/es/news-room/fact-sheets/detail/ambient-air-pollution"
+                    >La contaminación del aire y el agua afecta la salud humana
+                    y la biodiversidad.</a
+                  >
+                </li>
+                <li>
+                  <a href="https://www.epa.gov/p2/industrial-pollution"
+                    >Las actividades industriales son una de las principales
+                    fuentes de contaminación.</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.nationalgeographic.com/environment/article/plastic-pollution"
+                    >Reducir el uso de plásticos es clave para proteger nuestros
+                    ecosistemas.</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://www.worldwildlife.org/initiatives/environmental-conservation"
+                    >La conservación del medio ambiente es esencial para un
+                    futuro sostenible.</a
+                  >
+                </li>
+              </ol>
+            </li>
+          </ul>
+        </div>
+        <!-- end #sidebar -->
+        <div style="clear: both">&nbsp;</div>
+      </div>
+      <!-- end #page -->
+      <div id="footer">
+        <p>
+          Copyright © 2024 - Coorp. sleepy69.  - All rights reserved. Design by
+          <a href="https://whatismyipaddress.com/">Arzoniro</a>.
+        </p>
+      </div>
+      <!-- end #footer -->
+    </div>
+  </body>
+</html>
